@@ -1,4 +1,6 @@
 <h1>Books</h1>
+<% @books.each do |book| %>
+
 <table>
   <thead>
     <tr>
@@ -9,6 +11,14 @@
   </thead>
 
   <tbody>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <span>
+        <%= link_to "show",book_path(book.id) %>
+        </span>
+        <% end %>
+      </tr>
       <tr>
         <td>リーダブルコード</td>
         <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
@@ -58,18 +68,7 @@
         <td><a class="edit_52159" href="/books/52159/edit">Edit</a></td>
         <td><a data-confirm="Are you sure?" class="destroy_52159" rel="nofollow" data-method="delete" href="/books/52159">Destroy</a></td>
       </tr>
+      <tr></tr>
   </tbody>
 </table>
 
-<h1>New book</h1>
-
-<%= form_with model: @book, local: true do |f| %>
-
-<h4>Title</h4>
-<%= f.text_field :title %>
-
-<h4>Body</h4>
-<%= f.text_area :body %>
-
-<%= f.submit 'Create Book' %>
-<% end %>
